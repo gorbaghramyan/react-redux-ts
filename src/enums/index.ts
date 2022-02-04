@@ -1,0 +1,6 @@
+export enum TodoActionTypes {
+    FETCH_TODOS = 'FETCH_TODOS',
+    UPDATE_TODOS = 'UPDATE_TODOS',
+    TODOS_ERROR = 'TODOS_ERROR',
+    DELETE_TODO = 'DELETE_TODO',
+};

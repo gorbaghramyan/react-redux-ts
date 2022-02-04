@@ -1,0 +1,27 @@
+.todo-card {
+    border: black 1px solid;
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+}
+
+.todo-card h1 {
+    font-size: 20px;
+}
+
+.todo-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60vw;
+    margin: 25px auto;
+}
+
+.todo-add input[type="text"] {}
+
+.todo-add button {
+    margin: 5px auto 0;
+    width: 200px;
+}

@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import TodoCard from "./components/TodoCard";
+import { useSelector } from "react-redux";
+import { useActions } from "./hooks/useAction";
+import { UpdateTodosAction } from "./types/actionTypes";
+import { Todo } from "./models/todo";
+import AddTodoCard from "./components/AddTodoCard";
 
-function App() {
+const App: React.FC = (): JSX.Element => {
+  const { fetchTodos } = useActions();
+  const todos: Todo[] = useSelector(
+    (state: UpdateTodosAction) => state.payload
+  );
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddTodoCard />
+      <div className="todo-container">
+        {todos?.length ? (
+          todos.map(todo => <TodoCard {...todo} />)
+        ) : (
+          <div>Loading..</div>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
